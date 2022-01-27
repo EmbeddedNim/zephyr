@@ -48,7 +48,7 @@
 							/* GND */
 
 				<6 0 &gpio1 16 0>,	/* PWM2 - Feather:D13 */
-				<7 0 &gpio0 7 0>,	/* INT2 - Feather:D11 */
+				<7 0 &gpio0 6 0>,	/* INT2 - Feather:D11 */
 				<8 0 &gpio0 24 0>,	/* RXD - Feather:RXD */
 				<9 0 &gpio0 25 0>,	/* TXD - Feather:TXD */
 				<10 0 &gpio0 11 0>,	/* SCL - Feather:SCL */
@@ -64,3 +64,7 @@ mikrobus_i2c: &i2c0 {
 mikrobus_spi: &spi1 {
 	status = "okay";
 };
+mikrobus_serial: &uart0 {
+	status = "okay";
+};
+
