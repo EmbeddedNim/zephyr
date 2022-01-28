@@ -287,7 +287,7 @@ static void w5500_isr(const struct device *dev)
 	int sem_status = -EAGAIN;
 	int rx_status = 0;
 	struct w5500_runtime *ctx = dev->data;
-	struct w5500_config *config = dev->config;
+	const struct w5500_config *config = dev->config;
 
 	while (true) {
 		do {
