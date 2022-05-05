@@ -10,6 +10,10 @@
 #include <zephyr/types.h>
 #include <random/rand32.h>
 
+#if defined(CONFIG_ETH_GEN_MAC_FROM_SENSOR_ID)
+#include <drivers/hwinfo.h>
+#endif
+
 /* helper macro to return mac address octet from local_mac_address prop */
 #define NODE_MAC_ADDR_OCTET(node, n) DT_PROP_BY_IDX(node, local_mac_address, n)
 
@@ -34,7 +38,11 @@ static inline void gen_random_mac(uint8_t *mac_addr, uint8_t b0, uint8_t b1, uin
 {
 	uint32_t entropy;
 
+#if CONFIG_ETH_GEN_MAC_FROM_SENSOR_ID
+	hwinfo_get_device_id(&entropy, sizeof(entropy));
+#else
 	entropy = sys_rand32_get();
+#endif /* CONFIG_ETH_GEN_MAC_FROM_SENSOR_ID */
 
 	mac_addr[0] = b0;
 	mac_addr[1] = b1;

@@ -21,6 +21,11 @@ config ETH_INIT_PRIORITY
 	  Note that the priority needs to be lower than the net stack
 	  so that it can start before the networking sub-system.
 
+config ETH_GEN_MAC_FROM_SENSOR_ID
+	bool "Ethernet mac address generated via sensor id"
+	help
+	  Generate random mac address from sensor id
+
 config ETH_QEMU_IFACE_NAME
 	string "Network interface name for QEMU"
 	default "zeth"
